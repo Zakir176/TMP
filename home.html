@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Matrix Players Academy</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #150a30;
+      color: white;
+      overflow-x: hidden;
+      perspective: 2px;
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(21, 10, 48, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 20px 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(138, 92, 246, 0.2);
+    }
+    
+    .navbar.scrolled {
+      padding: 15px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      color: #8a5cf6;
+      text-decoration: none;
+      text-shadow: 1px 1px 2px rgba(0, 0, 255, 0.5); /* Add blue shadow */
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #8a5cf6;
+    }
+    
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+    }
+    
+    /* Container and Section Styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-top: 100px;
+    }
+    
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    .section {
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Parallax Styles */
+    .parallax-wrapper {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      perspective: 2px;
+    }
+    
+    .parallax-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+    }
+    
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateZ(-1px) scale(1.5);
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+    
+    .bg-1 {
+      background: radial-gradient(circle, #331866 0%, #150a30 100%);
+    }
+    
+    .bg-2 {
+      background: radial-gradient(circle, #2a1355 0%, #150a30 100%);
+    }
+    
+    .bg-3 {
+      background: radial-gradient(circle, #231044 0%, #150a30 100%);
+    }
+    
+    .parallax-content {
+      background-color: rgba(21, 10, 48, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 40px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      transform: translateZ(0);
+    }
+    
+    /* Original Styles */
+    .grid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .info-box {
+      width: 48%;
+    }
+    
+    .features {
+      margin-top: 20px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .check-icon {
+      color: #8a5cf6;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    .device-mockup {
+      width: 48%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(138, 92, 246, 0.4);
+      background-color: #1f1235;
+    }
+    
+    .device-mockup img {
+      width: 100%;
+      height: auto;
+    }
+    
+    .quote {
+      font-style: italic;
+      margin: 30px 0;
+      padding: 0 20px;
+    }
+    
+    .accelerator {
+      background-color: rgba(31, 18, 53, 0.8);
+      backdrop-filter: blur(5px);
+      border-radius: 10px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(138, 92, 246, 0.2);
+      transform: translateZ(0);
+    }
+    
+    .pricing-section {
+      text-align: center;
+    }
+    
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+    }
+    
+    .toggle {
+      width: 60px;
+      height: 30px;
+      background-color: #8a5cf6;
+      border-radius: 15px;
+      margin: 0 10px;
+      position: relative;
+    }
+    
+    .toggle-button {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background-color: white;
+      border-radius: 50%;
+      top: 2px;
+      right: 2px;
+    }
+    
+    .pricing-card {
+      background-color: rgba(31, 18, 53, 0.8);
+      backdrop-filter: blur(5px);
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(138, 92, 246, 0.2);
+      transform: translateZ(0);
+    }
+    
+    .price {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+    
+    .btn {
+      display: block;
+      background-color: #007bff; /* Change button color to blue */
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #7649e3;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+    }
+    
+    .icon {
+      display: inline-block;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .urgent {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .grid-icon {
+      display: inline-block;
+      background-color: #8a5cf6;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    /* Floating elements animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #150a30;
+        flex-direction: column;
+        padding-top: 50px;
+        transition: all 0.5s ease;
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links li {
+        margin: 15px 0;
+        padding: 0 30px;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .info-box, .device-mockup {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      
+      .grid {
+        flex-direction: column;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      .parallax-section {
+        height: auto;
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">The Matrix Players Academy</a>
+
+      <div class="menu-toggle">☰</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#accelerator">Accelerator</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="parallax-wrapper">
+    <!-- Hero Section -->
+    <section id="home" class="parallax-section">
+      <div class="parallax-bg bg-1"></div>
+      <div class="parallax-content">
+        <div class="header">
+          <h1>Crack the Code to Financial Freedom with Forex—Your Key to Wealth Awaits!</h1>
+        </div>
+        
+        <div class="section">
+          <div class="grid">
+            <div class="info-box">
+              <div class="icon floating">
+                <span>🚀</span> LEARN PROVEN TRADING SYSTEMS
+              </div>
+              <h2>From $0 to $10K a Month—Faster Than You Thought Possible</h2>
+              
+              <div class="features">
+                <div class="feature">
+                  <div class="check-icon">✓</div>
+                  <div>Implement battle-tested systems proven by traders earning 5-6 figures monthly.</div>
+                </div>
+                <div class="feature">
+                  <div class="check-icon">✓</div>
+                  <div>Skip the painful learning curve—our step-by-step methods get you results faster.</div>
+                </div>
+                <div class="feature">
+                  <div class="check-icon">✓</div>
+                  <div>Say goodbye to blown accounts and inconsistent trades—trade smarter from day one.</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="device-mockup">
+              <img src="/api/placeholder/400/320" alt="Trading platform visualization" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Community Section -->
+    <section id="community" class="parallax-section">
+      <div class="parallax-bg bg-2"></div>
+      <div class="parallax-content">
+        <div class="grid">
+          <div class="info-box">
+            <div class="icon floating">
+              <span>🎮</span> JOIN A VIBRANT COMMUNITY
+            </div>
+            <h2>Revolutionise Your Trading—Fast and Easy</h2>
+            
+            <div class="features">
+              <div class="feature">
+                <div class="check-icon">✓</div>
+                <div>Participate in weekly live trading sessions and watch profitable setups unfold in real time.</div>
+              </div>
+              <div class="feature">
+                <div class="check-icon">✓</div>
+                <div>Get all your questions answered during Q&A sessions—trade confidently without second-guessing.</div>
+              </div>
+              <div class="feature">
+                <div class="check-icon">✓</div>
+                <div>Connect with an elite community of traders who fast-track their results just like you.</div>
+              </div>
+            </div>
+            
+            <div class="quote">
+              You'll never feel alone in your trading journey again. With our guidance, you'll execute trades confidently and see fast returns.
+            </div>
+          </div>
+          
+          <div class="device-mockup">
+            <img src="/api/placeholder/400/320" alt="Trading platform interfaces" />
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Accelerator Section -->
+    <section id="accelerator" class="parallax-section">
+      <div class="parallax-bg bg-3"></div>
+      <div class="parallax-content">
+        <div class="accelerator">
+          <div class="icon floating">
+            <span>🚀</span>
+          </div>
+          <h2>The Forex Profit Accelerator Puts You First</h2>
+          <p>You come first and we are fully committed to being part of your success journey.</p>
+          
+          <div class="features" style="max-width: 500px; margin: 0 auto; text-align: left;">
+            <div class="feature">
+              <div class="check-icon">✓</div>
+              <div>Complete the course.</div>
+            </div>
+            <div class="feature">
+              <div class="check-icon">✓</div>
+              <div>Join our vibrant community chats and interact with other traders inside.</div>
+            </div>
+            <div class="feature">
+              <div class="check-icon">✓</div>
+              <div>Attend weekly live webinars for 2 months.</div>
+            </div>
+          </div>
+          
+          <p>With The Forex Profit Accelerator, you'll finally have the tools to start profiting immediately.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="parallax-section">
+      <div class="parallax-bg bg-1"></div>
+      <div class="parallax-content">
+        <div class="pricing-section">
+          <div class="icon floating">
+            <span>📺</span> Forex Profit Accelerator
+          </div>
+          <h2>Here's Exactly What You Get Inside—Your Trading Breakthrough Starts in Just 7 Days!</h2>
+          
+          <div class="urgent">🔥 Act Fast – ONLY 3 Spots Left!</div>
+          
+          <div class="toggle-container">
+            <span>Lite</span>
+            <div class="toggle">
+              <div class="toggle-button"></div>
+            </div>
+            <span>Pro</span>
+            <span style="margin-left: 10px; font-size: 14px;">⚡ More Value</span>
+          </div>
+          
+          <div class="pricing-card">
+            <div class="grid-icon floating">
+              <span>⊞</span>
+            </div>
+            <h3>Pro</h3>
+            <p>Take your first step into trading with this Pro version—start quickly and confidently using proven methods for success.</p>
+            
+            <div class="price">$197</div>
+            
+            <div>
