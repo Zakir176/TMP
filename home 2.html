@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Matrix Players - Expert Forex Trading Mentorship</title>
+  <style>
+    :root {
+      --navy: #0A2647;
+      --teal: #144272;
+      --gold: #F0A500;
+      --white: #F5F5F5;
+      --light-gray: #E8E8E8;
+      --charcoal: #333333;
+      --positive: #25D366;
+      --negative: #E74C3C;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      background-color: var(--navy);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    
+    .logo span {
+      color: var(--gold);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    
+    .cta-button {
+      background-color: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--white);
+      transform: translateY(-2px);
+    }
+    
+    .hero {
+      background: linear-gradient(to right, var(--navy), var(--teal));
+      color: var(--white);
+      padding: 5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero h1 span {
+      color: var(--gold);
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-cta {
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .hero-cta:hover {
+      background-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .hero-image {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .features {
+      padding: 5rem 2rem;
+      background-color: var(--light-gray);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      color: var(--charcoal);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .feature-card h3 {
+      color: var(--navy);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .testimonials {
+      padding: 5rem 2rem;
+      background-color: var(--white);
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      background-color: var(--light-gray);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .author-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .author-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+    
+    .author-info p {
+      color: var(--teal);
+      font-size: 0.9rem;
+    }
+    
+    .pricing {
+      padding: 5rem 2rem;
+      background: linear-gradient(to left, var(--navy), var(--teal));
+      color: var(--white);
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .pricing-card {
+      background-color: var(--white);
+      color: var(--charcoal);
+      padding: 3rem 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .pricing-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .pricing-card.featured {
+      position: relative;
+      border: 2px solid var(--gold);
+      transform: scale(1.05);
+    }
+    
+    .pricing-card.featured::after {
+      content: "Most Popular";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--gold);
+      color: var(--navy);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    
+    .pricing-card h3 {
+      font-size: 1.8rem;
+      color: var (--navy);
+      margin-bottom: 1rem;
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .price span {
+      font-size: 1rem;
+      position: absolute;
+      top: 8px;
+      margin-left: 5px;
+    }
+    
+    .pricing-features {
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-features li {
+      margin-bottom: 0.5rem;
+      list-style: none;
+    }
+    
+    .pricing-cta {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .pricing-cta:hover {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
+    
+    .pricing-card.featured .pricing-cta {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
+    
+    .pricing-card.featured .pricing-cta:hover {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+    
+    .chart-section {
+      padding: 5rem 2rem;
+      background-color: var(--white);
+    }
+    
+    .chart-container {
+      background-color: var(--light-gray);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+    }
+    
+    .chart {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .chart-label {
+      width: 100px;
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    
+    .chart-bar-container {
+      flex-grow: 1;
+      height: 30px;
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .chart-bar {
+      height: 100%;
+      border-radius: 15px;
+    }
+    
+    .chart-bar.positive {
+      background-color: var(--positive);
+    }
+    
+    .chart-bar.negative {
+      background-color: var(--negative);
+    }
+    
+    .chart-value {
+      width: 50px;
+      flex-shrink: 0;
+      text-align: right;
+      font-weight: 600;
+    }
+    
+    .cta-section {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-section p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    /*footer*/
+     .footer {
+            background: linear-gradient(90deg, var(--navy), var(--teal));
+            color: var(--white);
+            padding: 2rem 0;
+            box-shadow: 0 -5px 15px rgba(20, 66, 114, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background animation */
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(rgba(240, 165, 0, 0.03) 1px, transparent 2px);
+            background-size: 20px 20px;
+            animation: gridAnimation 40s linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        @keyframes gridAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+        
+        .footer-section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .footer-section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .footer-section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .footer-section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-section h3 {
+            position: relative;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            animation: expandWidth 1s forwards;
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes expandWidth {
+            to {
+                width: 50px;
+            }
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a {
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-section a::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        
+        .footer-section a:hover::before {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+            padding-left: 0;
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-5px) rotate(360deg);
+        }
+        
+        .social-links a::before {
+            display: none;
+        }
+        
+        .social-links i {
+            font-size: 1.2rem;
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            background: var(--navy);
+            border: 1px solid var(--teal);
+            color: var(--white);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .newsletter input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(240, 165, 0, 0.5);
+            outline: none;
+        }
+        
+        .newsletter button {
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .newsletter button:hover::before {
+            left: 100%;
+        }
+        
+        .newsletter button:hover {
+            background: #d99200;
+            transform: scale(1.05);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245, 245, 245, 0.1);
+            margin-top: 2rem;
+            color: var(--light-gray);
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1.5rem 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Matrix code rain effect modified for forex */
+        .matrix-code-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .matrix-code {
+            position: absolute;
+            color: rgba(240, 165, 0, 0.15);
+            font-family: monospace;
+            font-size: 1.2rem;
+            filter: blur(1px);
+            animation: matrix-rain 8s linear infinite;
+        }
+        
+        @keyframes matrix-rain {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+            margin-top: 1rem;
+            line-height: 1.4;
+            padding: 0.8rem;
+            border-left: 2px solid var (--gold);
+            background: rgba(240, 165, 0, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* For currency ticker animation */
+        .currency-ticker {
+            background: rgba(10, 38, 71, 0.7);
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 2rem;
+            padding: 10px 0;
+            border-top: 1px solid rgba(245, 245, 245, 0.1);
+            border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 20s linear infinite;
+            padding-left: 100%;
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 15px;
+            color: var(--white);
+        }
+        
+        .ticker-item .up {
+            color: var(--positive);
+        }
+        
+        .ticker-item .down {
+            color: var(--negative);
+        }
+        
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+      
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pricing-card.featured {
+        grid-column: span 2;
+        margin-bottom: 2rem;
+      }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-image {
+        width: 80%;
+        order: -1;
+        margin-bottom: 2rem;
+      }
+      
+      .features-grid, 
+      .testimonial-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+          
+      .nav-links {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 360px) {
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+            
+            .footer-section p, .footer-section a {
+                font-size: 0.9rem;
+                margin-bottom: 0.7rem;
+            }
+            
+            .newsletter button {
+                width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">
+      <div>The <span>Matrix</span> Players</div>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#results">Results</a>
+    </div>
+    <button class="cta-button">Free Consultation</button>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Master Forex Trading with <span>The Matrix Players</span></h1>
+      <p>Join our exclusive trading community and learn proven strategies from professional traders with over 25 years of combined experience in the forex market.</p>
+      <button class="hero-cta">Start Your Trading Journey</button>
+    </div>
+    <div class="hero-image">
+      <img src="/api/placeholder/500/300" alt="Forex Trading Dashboard" style="max-width: 100%; height: auto;">
+
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-title">
+      <h2>Why Choose The Matrix Players</h2>
+      <p>We provide comprehensive training and ongoing support to help you succeed in the forex market.</p>
+    </div>
+    <div class="features-grid" style="display: grid; grid-template-columns: repeat(2, 1fr);">
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Advanced Trading Strategies</h3>
+        <p>Learn proven trading methodologies that adapt to changing market conditions and help you capitalize on high-probability setups.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Technical Analysis Mastery</h3>
+        <p>Develop expertise in chart patterns, indicators, and price action to identify profitable trade opportunities with confidence.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Trading Psychology</h3>
+        <p>Overcome emotional trading and develop the disciplined mindset required to execute your trading plan consistently.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <h3>Risk Management</h3>
+        <p>Master essential risk management techniques to protect your capital and ensure long-term profitability.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Community Support</h3>
+        <p>Join our active trading community to share ideas, get feedback, and accelerate your learning through collaboration.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Personalized Coaching</h3>
+        <p>Receive one-on-one guidance tailored to your trading goals, experience level, and preferred trading style.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-title">
+      <h2>Success Stories</h2>
+      <p>Hear from traders who have transformed their results through our mentorship program.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "After struggling for years with inconsistent results, the structured approach and personalized guidance from The Matrix Players completely transformed my trading. I'm now consistently profitable and have achieved financial freedom."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-image">
+            <img src="/api/placeholder/60/60" alt="Sarah J.">
+          </div>
+          <div class="author-info">
+            <h4>Sarah J.</h4>
+            <p>Full-time Trader, 2 Years with Program</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "The risk management strategies alone were worth the investment. I went from blowing accounts to steady growth, and the community support keeps me accountable. Best decision I've made for my trading career."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-image">
+            <img src="/api/placeholder/60/60" alt="Michael T.">
+          </div>
+          <div class="author-info">
+            <h4>Michael T.</h4>
+            <p>Part-time Trader, 1 Year with Program</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "As someone who tried countless courses and signals services, I was skeptical. But the mentors at The Matrix Players actually care about your success. They taught me to fish rather than giving me fish, and now I'm completely independent in my analysis."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-image">
+            <img src="/api/placeholder/60/60" alt="David R.">
+          </div>
+          <div class="author-info">
+            <h4>David R.</h4>
+            <p>Swing Trader, 18 Months with Program</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          "The technical analysis framework they teach is incredibly powerful yet simple to implement. I'm now spotting setups I would have missed before, and my win rate has increased from 40% to over 65%."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-image">
+            <img src="/api/placeholder/60/60" alt="Jennifer L.">
+          </div>
+          <div class="author-info">
+            <h4>Jennifer L.</h4>
+            <p>Day Trader, 9 Months with Program</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <div class="section-title">
+      <h2>Mentorship Programs</h2>
+      <p>Choose the level of support and guidance that matches your trading goals.</p>
+    </div>
+    <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(2, 1fr);">
+
+      <div class="pricing-card">
+        <h3>Foundation</h3>
+        <div class="price">$297<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Core Strategy Course</li>
+          <li>Weekly Group Coaching</li>
+          <li>Trading Community Access</li>
+          <li>Trade Setup Examples</li>
+          <li>Basic Trade Analysis</li>
+        </ul>
+        <a href="#" class="pricing-cta">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Professional</h3>
+        <div class="price">$497<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Everything in Foundation</li>
+          <li>Advanced Strategy Modules</li>
+          <li>2 Personal Coaching Sessions/Month</li>
+          <li>Trade Plan Development</li>
+          <li>Portfolio Review</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="#" class="pricing-cta">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Elite</h3>
+        <div class="price">$997<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Everything in Professional</li>
+          <li>Weekly 1-on-1 Coaching</li>
+          <li>Custom Strategy Development</li>
+          <li>24/7 Direct Mentor Access</li>
+          <li>Proprietary Indicators</li>
+          <li>Lifetime Strategy Updates</li>
+        </ul>
+        <a href="#" class="pricing-cta">Get Started</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Results Section -->
+  <section class="chart-section" id="results">
+    <div class="section-title">
+      <h2>Student Performance</h2>
+      <p>Average monthly returns of Matrix Players students after completing the program.</p>
+    </div>
+    <div class="chart-container">
+      <div class="chart">
+        <div class="chart-row">
+          <div class="chart-label">Month 1</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar positive" style="width: 20%"></div>
+          </div>
+          <div class="chart-value">2.5%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Month 3</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar positive" style="width: 40%"></div>
+          </div>
+          <div class="chart-value">5.2%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Month 6</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar positive" style="width: 60%"></div>
+          </div>
+          <div class="chart-value">7.8%</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Month 12</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar positive" style="width: 85%"></div>
+          </div>
+          <div class="chart-value">10.5%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Transform Your Trading?</h2>
+    <p>Join The Matrix Players mentorship program today and get access to professional guidance, proven strategies, and a supportive community of traders.</p>
+    <button class="hero-cta">Schedule a Free Strategy Call</button>
+  </section>
+  
+  <!-- Footer -->
+    <footer class="footer">
+      <!-- Matrix code rain animation -->
+      <div class="matrix-code-container">
+          <script>
+              // Create falling forex code
+             
+          </script>
+      </div>
+      
+      <!-- Currency ticker -->
+      <div class="currency-ticker">
+    <div class="ticker-content" id="forexTicker">Loading forex data...</div>
+      </div>
+      
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>Matrix Players</h3>
+              <p>Premium forex trading mentorship where market analysis meets strategy and success. Decode the Matrix of financial markets.</p>
+              <div class="social-links">
+                  <a href="#"><i>FB</i></a>
+                  <a href="#"><i>TW</i></a>
+                  <a href="#"><i>IG</i></a>
+                  <a href="#"><i>TG</i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Resources</h3>
+              <a href="#">Home</a>
+              <a href="#">Trading Courses</a>
+              <a href="#">Market Analysis</a>
+              <a href="#">Trading Strategies</a>
+              <a href="#">Success Stories</a>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Mentorship</h3>
+              <a href="#">Programs</a>
+              <a href="#">One-on-One Coaching</a>
+              <a href="#">Live Trading Sessions</a>
+              <a href="#">Trading Tools</a>
+              <a href="#">FAQ</a>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Get Updates</h3>
+              <p>Subscribe for market insights and trading opportunities.</p>
+              <form class="newsletter">
+                  <input type="email" placeholder="Enter your email">
+                  <button type="submit">Subscribe</button>
+              </form>
+              <p class="disclaimer">Risk warning: Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results.</p>
+          </div>
+      </div>
+      
+      <div class="footer-bottom">
+          <p>&copy; 2025 Matrix Players Forex Mentorship. All rights reserved. Trading with confidence.</p>
+      </div>
+  </footer> 
+</body>
+<script>
+      async function fetchForexData() {
+      try {
+        let response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        let data = await response.json();
+        let pairs = `
+          <span class="ticker-item">EUR/USD <span class="up">${data.rates.EUR.toFixed(4)}</span></span>
+          <span class="ticker-item">GBP/USD <span class="down">${data.rates.GBP.toFixed(4)}</span></span>
+          <span class="ticker-item">USD/JPY <span class="up">${data.rates.JPY.toFixed(2)}</span></span>
+          <span class="ticker-item">AUD/USD <span class="down">${data.rates.AUD.toFixed(4)}</span></span>
+          <span class="ticker-item">USD/CAD <span class="up">${data.rates.CAD.toFixed(4)}</span></span>
+          <span class="ticker-item">USD/CHF <span class="down">${data.rates.CHF.toFixed(4)}</span></span>
+          <span class="ticker-item">NZD/USD <span class="up">${data.rates.NZD.toFixed(4)}</span></span>
+        `;
+        document.getElementById("forexTicker").innerHTML = pairs;
+      } catch (error) {
+        document.getElementById("forexTicker").textContent = "Error fetching forex data";
+      }
+    }
+    fetchForexData();
+    setInterval(fetchForexData, 45000);
+
+    function createMatrixRain() {
+                  const container = document.querySelector('.matrix-code-container');
+                  const characters = '0123456789£€$¥₹₽¢₣₤₦₩₪₫₭₮₱₲₴₸₺₼₽€£$¥';
+                  
+                  for (let i = 0; i < 30; i++) {
+                      const code = document.createElement('div');
+                      code.className = 'matrix-code';
+                      
+                      // Random position
+                      code.style.left = Math.random() * 100 + '%';
+                      
+                      // Random delay
+                      code.style.animationDelay = Math.random() * 5 + 's';
+                      
+                      // Random speed
+                      code.style.animationDuration = Math.random() * 10 + 5 + 's';
+                      
+                      // Random text
+                      let text = '';
+                      for (let j = 0; j < 20; j++) {
+                          text += characters.charAt(Math.floor(Math.random() * characters.length));
+                      }
+                      code.textContent = text;
+                      
+                      container.appendChild(code);
+                  }
+              }
+              
+              // Execute when page loads
+              window.addEventListener('load', createMatrixRain);
+</script>
+</html>
