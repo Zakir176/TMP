@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Players - Email Subscription</title>
+    <style>
+        :root {
+            --black: #121212;
+            --dark-grey: #1E1E1E;
+            --grey: #333333;
+            --light-grey: #E0E0E0;
+            --white: #F5F5F5;
+            --green: #00C853;
+            --red: #FF3D00;
+            --green-dark: #00A244;
+            --red-dark: #C30000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .subscription-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--dark-grey);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--green);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--light-grey);
+            font-size: 1rem;
+        }
+
+        .subscription-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--grey);
+            background-color: var(--grey);
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--green);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            background-color: var(--green);
+            color: var(--black);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--green-dark);
+        }
+
+        .success-message,
+        .error-message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            background-color: rgba(0, 200, 83, 0.2);
+            border: 1px solid var(--green);
+        }
+
+        .error-message {
+            background-color: rgba(255, 61, 0, 0.2);
+            border: 1px solid var(--red);
+        }
+
+        .admin-panel {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--grey);
+        }
+
+        .email-template {
+            background-color: var(--grey);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .email-template textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--grey);
+            background-color: var(--dark-grey);
+            color: var(--white);
+            font-size: 1rem;
+            resize: vertical;
+            margin-top: 15px;
+        }
+
+        .subscriber-list {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        table th {
+            background-color: var(--grey);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .subscription-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="subscription-section">
+        <div class="section-title">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for trading insights, market analysis, and exclusive opportunities.</p>
+        </div>
+
+        <!-- User Subscription Form -->
+        <form class="subscription-form" id="subscriptionForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="interestLevel">Trading Experience</label>
+                <select id="interestLevel" name="interestLevel">
+                    <option value="beginner">Beginner (0-1 years)</option>
+                    <option value="intermediate">Intermediate (1-3 years)</option>
+                    <option value="advanced">Advanced (3+ years)</option>
+                </select>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="marketUpdates" name="interests" value="marketUpdates" checked>
+                <label for="marketUpdates">Daily Market Updates</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="tradingTips" name="interests" value="tradingTips" checked>
+                <label for="tradingTips">Trading Tips & Strategies</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="webinars" name="interests" value="webinars" checked>
+                <label for="webinars">Webinar Announcements</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="promotions" name="interests" value="promotions">
+                <label for="promotions">Exclusive Promotions</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="termsAccept" name="termsAccept" required>
+                <label for="termsAccept">I agree to receive emails from Matrix Players. I understand I can unsubscribe at any time.</label>
+            </div>
+            <button type="submit" class="btn">Subscribe Now</button>
+            <div class="success-message" id="successMessage">
+                <p>Thank you for subscribing! Please check your email to confirm your subscription.</p>
+            </div>
+            <div class="error-message" id="errorMessage">
+                <p>There was an error processing your subscription. Please try again.</p>
+            </div>
+        </form>
+
+        <!-- Admin Section (would be protected in production) -->
+        <div class="admin-panel">
+            <div class="section-title">
+                <h2>Email Campaign Manager</h2>
+                <p>Create and send email campaigns to your subscribers</p>
+            </div>
+
+            <form id="emailCampaignForm">
+                <div class="form-group">
+                    <label for="campaignName">Campaign Name</label>
+                    <input type="text" id="campaignName" name="campaignName" required placeholder="July Market Update">
+                </div>
+                <div class="form-group">
+                    <label for="emailSubject">Email Subject</label>
+                    <input type="text" id="emailSubject" name="emailSubject" required placeholder="Important Market Update: July Opportunities">
+                </div>
+                <div class="form-group">
+                    <label for="targetAudience">Target Audience</label>
+                    <select id="targetAudience" name="targetAudience">
+                        <option value="all">All Subscribers</option>
+                        <option value="beginner">Beginners Only</option>
+                        <option value="intermediate">Intermediate Traders</option>
+                        <option value="advanced">Advanced Traders</option>
+                    </select>
+                </div>
+                <div class="email-template">
+                    <label for="emailContent">Email Content</label>
+                    <textarea id="emailContent" name="emailContent" required placeholder="Dear {{name}},
+
+We hope this email finds you well. Here's our latest market analysis and trading opportunities for this week...
+
+Best regards,
+The Matrix Players Team"></textarea>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <button type="submit" class="btn">Send Campaign</button>
+                </div>
+            </form>
+
+            <div class="subscriber-list">
+                <h3>Recent Subscribers</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Experience</th>
+                            <th>Date Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscriberTableBody">
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john.smith@example.com</td>
+                            <td>Intermediate</td>
+                            <td>April 5, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Emma Wilson</td>
+                            <td>emma.w@example.com</td>
+                            <td>Beginner</td>
+                            <td>April 4, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Johnson</td>
+                            <td>robert.j@example.com</td>
+                            <td>Advanced</td>
+                            <td>April 2, 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Frontend JavaScript for form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const subscriptionForm = document.getElementById('subscriptionForm');
+            const emailCampaignForm = document.getElementById('emailCampaignForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Handle subscription form submission
+            subscriptionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(subscriptionForm);
+                const subscriberData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    experienceLevel: formData.get('interestLevel'),
+                    interests: Array.from(formData.getAll('interests')),
+                    subscriptionDate: new Date().toISOString()
+                };
+                
+                // In a real implementation, this would be an API call to your backend
+                subscribeUser(subscriberData)
+                    .then(response => {
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        subscriptionForm.reset();
+                        
+                        // Add new subscriber to the table
+                        addSubscriberToTable(subscriberData);
+                        
+                        // In production: Send welcome email
+                        sendWelcomeEmail(subscriberData);
+                    })
+                    .catch(error => {
+                        // Show error message
+                        errorMessage.style.display = 'block';
+                        successMessage.style.display = 'none';
+                        console.error('Subscription error:', error);
+                    });
+            });
+            
+            // Handle email campaign form submission
+            emailCampaignForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get campaign data
+                const formData = new FormData(emailCampaignForm);
+                const campaignData = {
+                    name: formData.get('campaignName'),
+                    subject: formData.get('emailSubject'),
+                    targetAudience: formData.get('targetAudience'),
+                    content: formData.get('emailContent')
+                };
+                
+                // In a real implementation, this would send the campaign to your email service
+                sendEmailCampaign(campaignData)
+                    .then(response => {
+                        alert('Campaign sent successfully!');
+                        emailCampaignForm.reset();
+                    })
+                    .catch(error => {
+                        alert('Error sending campaign. Please try again.');
+                        console.error('Campaign error:', error);
+                    });
+            });
+            
+            // Mock API functions (would be replaced with real API calls)
+            function subscribeUser(userData) {
+                // Simulate API call
+                return new Promise((resolve, reject) => {
+                    // In production: This would be a fetch() call to your backend API
+                    setTimeout(() => {
+                        // 95% success rate for demo
+                        if (Math.random() > 0.05) {
+                            resolve({ success: true, message: 'Subscription successful' });
+                        } else {
+                            reject({ success: false, message: 'Subscription failed' });
+                        }
+                    }, 1000);
+                });
+            }
+            
+            function sendEmailCampaign(campaignData) {
+                // Simulate API call
+                return new Promise((resolve, reject) => {
+                    // In production: This would be a fetch() call to your email service API
+                    setTimeout(() => {
+                        // 95% success rate for demo
+                        if (Math.random() > 0.05) {
+                            resolve({ success: true, message: 'Campaign sent successfully' });
+                        } else {
+                            reject({ success: false, message: 'Campaign failed to send' });
+                        }
+                    }, 1500);
+                });
+            }
+            
+            function sendWelcomeEmail(userData) {
+                // In production: This would send a welcome email to the new subscriber
+                console.log('Welcome email sent to:', userData.email);
+            }
+            
+            function addSubscriberToTable(userData) {
+                const subscriberTable = document.getElementById('subscriberTableBody');
+                const newRow = document.createElement('tr');
+                
+                // Format the date
+                const subscriptionDate = new Date();
+                const formattedDate = subscriptionDate.toLocaleDateString('en-US', { 
+                    month: 'long', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                });
+                
+                // Add the subscriber data to the row
+                newRow.innerHTML = `
+                    <td>${userData.name}</td>
+                    <td>${userData.email}</td>
+                    <td>${userData.experienceLevel}</td>
+                    <td>${formattedDate}</td>
+                `;
+                
+                // Add the row to the table (at the top)
+                subscriberTable.insertBefore(newRow, subscriberTable.firstChild);
+            }
+        });
+    </script>
+</body>
+</html>
