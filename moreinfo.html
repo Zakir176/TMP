@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Players - Pricing</title>
+    <style>
+        :root {
+            --black: #121212;
+            --dark-grey: #1E1E1E;
+            --grey: #333333;
+            --light-grey: #E0E0E0;
+            --white: #F5F5F5;
+            --green: #00C853;
+            --red: #FF3D00;
+            --green-dark: #00A244;
+            --red-dark: #C30000;
+            --positive: #00C853;
+            --negative: #FF3D00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .pricing-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--green);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--light-grey);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--dark-grey);
+            border-radius: 10px;
+            padding: 40px 30px;
+            width: 320px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .featured-card {
+            border: 2px solid var(--green);
+        }
+
+        .featured-label {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background-color: var(--green);
+            color: var(--black);
+            padding: 8px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .card-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--light-grey);
+        }
+
+        .billing-cycle {
+            color: var(--light-grey);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            color: var(--green);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .card-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--green);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--green-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--green);
+            color: var(--black);
+        }
+
+        .money-back {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px;
+            background-color: var(--grey);
+            border-radius: 10px;
+        }
+
+        .money-back h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .money-back p {
+            color: var(--light-grey);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+    /* Footer */
+    .footer {
+      background: linear-gradient(90deg, var(--black), var(--dark-grey));
+      color: var(--white);
+      padding: 2rem 0;
+      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+        
+    /* Background animation */
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(rgba(0, 200, 83, 0.03) 1px, transparent 2px);
+      background-size: 20px 20px;
+      animation: gridAnimation 40s linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+        
+    @keyframes gridAnimation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+        
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+        
+    .footer-section {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+        
+    .footer-section:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+        
+    .footer-section:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+        
+    .footer-section:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+        
+    .footer-section:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+        
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+        
+    .footer-section h3 {
+      position: relative;
+      color: var(--green);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+        
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      animation: expandWidth 1s forwards;
+      animation-delay: 0.8s;
+    }
+        
+    @keyframes expandWidth {
+      to {
+        width: 50px;
+      }
+    }
+        
+    .footer-section p, .footer-section a {
+      color: var(--light-grey);
+      margin-bottom: 1rem;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+        
+    .footer-section a {
+      position: relative;
+      padding-left: 15px;
+    }
+        
+    .footer-section a::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+        
+    .footer-section a:hover {
+      color: var(--green);
+      transform: translateX(5px);
+    }
+        
+    .footer-section a:hover::before {
+      opacity: 1;
+      color: var(--green);
+    }
+        
+    .social-links {
+      display: flex;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+        
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid var(--green);
+      transition: all 0.3s;
+      padding-left: 0;
+    }
+        
+    .social-links a:hover {
+      background: var(--green);
+      color: var(--black);
+      transform: translateY(-5px) rotate(360deg);
+    }
+        
+    .social-links a::before {
+      display: none;
+    }
+        
+    .social-links i {
+      font-size: 1.2rem;
+    }
+        
+    .newsletter input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      background: var(--grey);
+      border: 1px solid var(--dark-grey);
+      color: var(--white);
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+        
+    .newsletter input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 8px rgba(0, 200, 83, 0.5);
+      outline: none;
+    }
+        
+    .newsletter button {
+      background: var(--green);
+      color: var(--black);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+        
+    .newsletter button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+        
+    .newsletter button:hover::before {
+      left: 100%;
+    }
+        
+    .newsletter button:hover {
+      background: var(--green-dark);
+      transform: scale(1.05);
+    }
+        
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(245, 245, 245, 0.1);
+      margin-top: 2rem;
+      color: var(--light-grey);
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding: 1.5rem 1.5rem 0;
+      position: relative;
+      z-index: 2;
+    }
+        
+    /* Matrix code rain effect modified for forex */
+    .matrix-code-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+        
+    .matrix-code {
+      position: absolute;
+      color: rgba(0, 200, 83, 0.15);
+      font-family: monospace;
+      font-size: 1.2rem;
+      filter: blur(1px);
+      animation: matrix-rain 8s linear infinite;
+    }
+        
+    @keyframes matrix-rain {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.15;
+      }
+      90% {
+        opacity: 0.15;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+        
+    .disclaimer {
+      font-size: 0.8rem;
+      color: var(--light-grey);
+      margin-top: 1rem;
+      line-height: 1.4;
+      padding: 0.8rem;
+      border-left: 2px solid var(--green);
+      background: rgba(0, 200, 83, 0.05);
+      border-radius: 0 4px 4px 0;
+    }
+        
+    /* For currency ticker animation */
+    .currency-ticker {
+      background: rgba(18, 18, 18, 0.7);
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 2rem;
+      padding: 10px 0;
+      border-top: 1px solid rgba(51, 51, 51, 0.5);
+      border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+        
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 20s linear infinite;
+      padding-left: 100%;
+    }
+        
+    .ticker-item {
+      display: inline-block;
+      padding: 0 15px;
+      color: var(--white);
+    }
+        
+    .ticker-item .up {
+      color: var(--positive);
+    }
+        
+    .ticker-item .down {
+      color: var(--negative);
+    }
+        
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+      
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pricing-card.featured {
+        grid-column: span 2;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-image {
+        width: 80%;
+        order: -1;
+        margin-bottom: 2rem;
+      }
+      
+      .features-grid, 
+      .testimonial-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+          
+      .nav-links {
+        display: none;
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media screen and (max-width: 360px) {
+      .footer-section h3 {
+        font-size: 1.1rem;
+      }
+            
+      .footer-section p, .footer-section a {
+        font-size: 0.9rem;
+        margin-bottom: 0.7rem;
+      }
+            
+      .newsletter button {
+        width: 100%;
+      }
+    }
+
+    </style>
+</head>
+<body>
+    <section class="pricing-section">
+        <div class="section-title">
+            <h2>Investment Plans</h2>
+            <p>Choose the right trading education package that fits your goals and experience level. Join the Matrix Players community and elevate your trading skills.</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- Beginner Plan -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Starter</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <div class="billing-cycle">or $499 paid quarterly</div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Basic Trading Strategies</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Weekly Market Analysis</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>2 Group Training Sessions/Month</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Community Forum Access</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Basic Educational Resources</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Pro Plan (Featured) -->
+            <div class="pricing-card featured-card">
+                <div class="featured-label">POPULAR</div>
+                <div class="card-header">
+                    <h3>Professional</h3>
+                    <div class="price">$349<span>/mo</span></div>
+                    <div class="billing-cycle">or $899 paid quarterly</div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Advanced Trading Strategies</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Daily Market Analysis</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>4 Group Training Sessions/Month</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>1 Personal Coaching Session/Month</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Trade Signal Alerts</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Premium Educational Resources</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Elite Plan -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Elite Trader</h3>
+                    <div class="price">$599<span>/mo</span></div>
+                    <div class="billing-cycle">or $1499 paid quarterly</div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Master-Level Trading Strategies</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Real-Time Market Analysis</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Unlimited Group Training Sessions</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Weekly Personal Coaching</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Priority Trade Signal Alerts</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Proprietary Trading Tools Access</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Exclusive Strategy Workshops</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="money-back">
+            <h3>30-Day Money-Back Guarantee</h3>
+            <p>Not satisfied with our service? Get a full refund within the first 30 days - no questions asked.</p>
+        </div>
+    </section>
+            
+    <footer class="footer">
+      <!-- Matrix code rain animation -->
+      <div class="matrix-code-container">
+          <script>
+              // Create falling forex code
+             
+          </script>
+      </div>
+      
+      <!-- Currency ticker -->
+      <div class="currency-ticker">
+    <div class="ticker-content" id="forexTicker">Loading forex data...</div>
+      </div>
+      
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>Matrix Players</h3>
+              <p>Premium forex trading mentorship where market analysis meets strategy and success. Decode the Matrix of financial markets.</p>
+              <div class="social-links">
+              <!--Snapchat--> <a href="https://snapchat.com/t/3KNQxkJA"><i class="fab fa-snapchat"></i></a>
+              <!--instagram--><a href="https://www.instagram.com/thematrixplayers?igsh=MXM0d3dsMzhhajMwbQ%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
+              <!--youtube--> <a href="https://youtube.com/@thematrixplayers?si=mATvx7QvPHl1E33b"><i class="fab fa-youtube"></i></a>
+              <a href="https://x.com/thematrixplayer?s=21"><i class="fab fa-x-twitter"></i></a>
+              <!--discord--><a href="#"><i class="fab fa-discord"></i></a>
+              <!--whatsapp--><a href="https://wa.me/+260979694082"><i class="fab fa-whatsapp"></i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Resources</h3>
+              <a href="#">Home</a>
+              <a href="#">Trading Courses</a>
+              <a href="#">Market Analysis</a>
+              <a href="#">Trading Strategies</a>
+              <a href="#">Success Stories</a>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Mentorship</h3>
+              <a href="#">Programs</a>
+              <a href="#">One-on-One Coaching</a>
+              <a href="#">Live Trading Sessions</a>
+              <a href="#">Trading Tools</a>
+              <a href="#">FAQ</a>
+          </div>
+          
+          <div class="footer-section">
+              <h3>Get Updates</h3>
+              <p>Subscribe for market insights and trading opportunities.</p>
+              <form class="newsletter">
+                  <input type="email" placeholder="Enter your email">
+                  <button type="submit">Subscribe</button>
+              </form>
+              <p class="disclaimer">Risk warning: Trading foreign exchange on margin carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results.</p>
+          </div>
+      </div>
+  </footer> 
+</div>
+
+<div class="footer-bottom">
+  <p>&copy; 2025 Matrix Players Forex Mentorship. All rights reserved. Trading with confidence.</p>
+</div>
+</footer> 
+</body>
+<script>
+async function fetchForexData() {
+try {
+let response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+let data = await response.json();
+let pairs = `
+  <span class="ticker-item">EUR/USD <span class="up">${data.rates.EUR.toFixed(4)}</span></span>
+  <span class="ticker-item">GBP/USD <span class="down">${data.rates.GBP.toFixed(4)}</span></span>
+  <span class="ticker-item">USD/JPY <span class="up">${data.rates.JPY.toFixed(2)}</span></span>
+  <span class="ticker-item">AUD/USD <span class="down">${data.rates.AUD.toFixed(4)}</span></span>
+  <span class="ticker-item">USD/CAD <span class="up">${data.rates.CAD.toFixed(4)}</span></span>
+  <span class="ticker-item">USD/CHF <span class="down">${data.rates.CHF.toFixed(4)}</span></span>
+  <span class="ticker-item">NZD/USD <span class="up">${data.rates.NZD.toFixed(4)}</span></span>
+`;
+document.getElementById("forexTicker").innerHTML = pairs;
+} catch (error) {
+document.getElementById("forexTicker").textContent = "Error fetching forex data";
+}
+}
+fetchForexData();
+setInterval(fetchForexData, 45000);
+
+function createMatrixRain() {
+          const container = document.querySelector('.matrix-code-container');
+          const characters = '0123456789£€$¥₹₽¢₣₤₦₩₪₫₭₮₱₲₴₸₺₼₽€£$¥';
+          
+          for (let i = 0; i < 30; i++) {
+              const code = document.createElement('div');
+              code.className = 'matrix-code';
+              
+              // Random position
+              code.style.left = Math.random() * 100 + '%';
+              
+              // Random delay
+              code.style.animationDelay = Math.random() * 5 + 's';
+              
+              // Random speed
+              code.style.animationDuration = Math.random() * 10 + 5 + 's';
+              
+              // Random text
+              let text = '';
+              for (let j = 0; j < 20; j++) {
+                  text += characters.charAt(Math.floor(Math.random() * characters.length));
+              }
+              code.textContent = text;
+              
+              container.appendChild(code);
+          }
+      }
+      
+      // Execute when page loads
+      window.addEventListener('load', createMatrixRain);
+</script>
+</body>
+</html>
